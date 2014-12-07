@@ -1,0 +1,7 @@
+AutoTypeSearch/*.suo
+AutoTypeSearch/*.user
+AutoTypeSearch/bin
+AutoTypeSearch/obj
+Releases/Build[!!-~]Outputs
+Releases/v*
+/Screenshots
