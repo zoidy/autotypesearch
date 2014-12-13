@@ -4,6 +4,7 @@ AutoTypeSearch/AutoTypeSearch.csproj -text
 AutoTypeSearch/AutoTypeSearch.sln -text
 AutoTypeSearch/AutoTypeSearchExt.cs -text
 AutoTypeSearch/HotKeyManager.cs -text
+AutoTypeSearch/Info.png -text
 AutoTypeSearch/NativeMethods.cs -text
 AutoTypeSearch/Options.Designer.cs -text
 AutoTypeSearch/Options.cs -text
@@ -19,7 +20,6 @@ AutoTypeSearch/SearchWindow.Designer.cs -text
 AutoTypeSearch/SearchWindow.cs -text
 AutoTypeSearch/SearchWindow.resx -text
 AutoTypeSearch/Searcher.cs -text
-AutoTypeSearch/Settings.cs -text
 AutoTypeSearch/Throbber.gif -text
 AutoTypeSearch/app.config -text
 /CreatePlgX.bat -text
