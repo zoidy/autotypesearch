@@ -1,5 +1,6 @@
 AutoTypeSearch/*.suo
 AutoTypeSearch/*.user
+AutoTypeSearch/.vs
 AutoTypeSearch/bin
 AutoTypeSearch/obj
 Releases/Build[!!-~]Outputs
