@@ -832,28 +832,32 @@ namespace AutoTypeSearch
 					case Actions.CopyPassword:
 						CopyPassword(searchResult);
 						break;
+					case Actions.PerformAutoTypePassword:
+						AutoTypeEntry(searchResult, "{PASSWORD}");
+						break;
 					default:
 						throw new ArgumentOutOfRangeException("action");
 				}
 			}
 		}
 
-		private void AutoTypeEntry(SearchResult searchResult)
+		private void AutoTypeEntry(SearchResult searchResult, string sequence = null)
 		{
 			bool result;
 			if (ActiveForm != null)
 			{
-				result = AutoType.PerformIntoPreviousWindow(mMainForm, searchResult.Entry, searchResult.Database);
+				result = AutoType.PerformIntoPreviousWindow(mMainForm, searchResult.Entry, searchResult.Database, sequence);
 			}
 			else
 			{
-				result = AutoType.PerformIntoCurrentWindow(searchResult.Entry, searchResult.Database);
+				result = AutoType.PerformIntoCurrentWindow(searchResult.Entry, searchResult.Database, sequence);
 			}
 			if (!result)
 			{
 				SystemSounds.Beep.Play();
 
-				if (Settings.Default.AlternativeAction != Actions.PerformAutoType)
+				if (Settings.Default.AlternativeAction != Actions.PerformAutoType && 
+					Settings.Default.AlternativeAction != Actions.PerformAutoTypePassword)
 				{
 					PerformAction(Settings.Default.AlternativeAction, searchResult);
 				}
@@ -919,7 +923,6 @@ namespace AutoTypeSearch
 				mMainForm.StartClipboardCountdown();
 			}
 		}
-		
 		#endregion
 	}
 }
