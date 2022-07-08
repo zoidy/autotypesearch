@@ -158,7 +158,10 @@ namespace AutoTypeSearch
 
 		private void OnDeactivate(object sender, EventArgs eventArgs)
 		{
-			Close();
+			if (!Settings.Default.DontCloseAfterDefaultAction)
+            {
+                Close();
+            }            
 		}
 
 		protected override void OnClosed(EventArgs e)
@@ -768,10 +771,10 @@ namespace AutoTypeSearch
 					mResults.SelectedIndex = mResults.Items.Count - 1;
 					return true;
 				case Keys.Enter:
-					PerformAction(Settings.Default.DefaultAction, mResults.SelectedItem as SearchResult);
+					PerformAction(Settings.Default.DefaultAction, mResults.SelectedItem as SearchResult, true);
 					break;
 				case Keys.Enter | Keys.Shift:
-					PerformAction(Settings.Default.AlternativeAction, mResults.SelectedItem as SearchResult);
+					PerformAction(Settings.Default.AlternativeAction, mResults.SelectedItem as SearchResult, false);
 					break;
 			}
 			
@@ -804,15 +807,26 @@ namespace AutoTypeSearch
 				var clickedResult = mResults.Items[clickIndex] as SearchResult;
 				if (clickedResult != null)
 				{
-					PerformAction((ModifierKeys & Keys.Shift) == Keys.Shift ? Settings.Default.AlternativeAction : Settings.Default.DefaultAction, clickedResult);
+					if ((ModifierKeys & Keys.Shift) == Keys.Shift)
+                    {
+                        PerformAction(Settings.Default.AlternativeAction, clickedResult, false);
+                    } 
+                    else 
+                    {
+                        PerformAction(Settings.Default.DefaultAction, clickedResult, true);
+                    }
+                    
 				}
 			}
 		}
 
-		private void PerformAction(Actions action, SearchResult searchResult)
+		private void PerformAction(Actions action, SearchResult searchResult, bool isPerformedAsDefault)
 		{
-			Close();
-
+			if (!isPerformedAsDefault || (isPerformedAsDefault && !Settings.Default.DontCloseAfterDefaultAction))
+            {
+                Close();
+            }                
+ 
 			if (searchResult != null)
 			{
 				switch (action)
@@ -862,7 +876,7 @@ namespace AutoTypeSearch
 				if (Settings.Default.AlternativeAction != Actions.PerformAutoType && 
 					Settings.Default.AlternativeAction != Actions.PerformAutoTypePassword)
 				{
-					PerformAction(Settings.Default.AlternativeAction, searchResult);
+					PerformAction(Settings.Default.AlternativeAction, searchResult, false);
 				}
 			}
 		}

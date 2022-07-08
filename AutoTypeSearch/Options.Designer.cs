@@ -51,6 +51,7 @@ namespace AutoTypeSearch
 			this.mShowOnHotKey = new System.Windows.Forms.CheckBox();
 			this.mShowOnIPC = new System.Windows.Forms.CheckBox();
 			this.mShowOnFailedSearch = new System.Windows.Forms.CheckBox();
+            this.mDontCloseAfterDefaultAction = new System.Windows.Forms.CheckBox();
 			searchOptionsGroup = new System.Windows.Forms.GroupBox();
 			searchInGroup = new System.Windows.Forms.GroupBox();
 			actionsGroup = new System.Windows.Forms.GroupBox();
@@ -183,11 +184,12 @@ namespace AutoTypeSearch
 			// 
 			actionsGroup.Controls.Add(this.mAlternativeAction);
 			actionsGroup.Controls.Add(this.mDefaultAction);
+            actionsGroup.Controls.Add(this.mDontCloseAfterDefaultAction);
 			actionsGroup.Controls.Add(alternativeActionLabel);
 			actionsGroup.Controls.Add(defaultActionLabel);
 			actionsGroup.Location = new System.Drawing.Point(6, 241);
 			actionsGroup.Name = "actionsGroup";
-			actionsGroup.Size = new System.Drawing.Size(540, 67);
+			actionsGroup.Size = new System.Drawing.Size(540, 95);
 			actionsGroup.TabIndex = 3;
 			actionsGroup.TabStop = false;
 			actionsGroup.Text = "Actions";
@@ -225,6 +227,16 @@ namespace AutoTypeSearch
 			defaultActionLabel.Size = new System.Drawing.Size(110, 13);
 			defaultActionLabel.TabIndex = 0;
 			defaultActionLabel.Text = "De&fault action (Enter):";
+            // 
+			// mDontCloseAfterDefaultAction
+			// 
+			this.mDontCloseAfterDefaultAction.AutoSize = true;
+			this.mDontCloseAfterDefaultAction.Location = new System.Drawing.Point(11, 67);
+			this.mDontCloseAfterDefaultAction.Name = "mDontCloseAfterDefaultAction";
+			this.mDontCloseAfterDefaultAction.Size = new System.Drawing.Size(46, 17);
+			this.mDontCloseAfterDefaultAction.TabIndex = 0;
+			this.mDontCloseAfterDefaultAction.Text = "&Leave window open after executing default action";
+			this.mDontCloseAfterDefaultAction.UseVisualStyleBackColor = true;
 			// 
 			// mShowHotKeyControl
 			// 
@@ -319,6 +331,7 @@ namespace AutoTypeSearch
 		private System.Windows.Forms.ComboBox mAlternativeAction;
 		private System.Windows.Forms.ComboBox mDefaultAction;
 		private System.Windows.Forms.GroupBox mShowSearchGroup;
-
+        private System.Windows.Forms.CheckBox mDontCloseAfterDefaultAction;
+        
 	}
 }

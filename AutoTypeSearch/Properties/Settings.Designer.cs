@@ -214,5 +214,17 @@ namespace AutoTypeSearch.Properties {
                 this["ShowHotKey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DontCloseAfterDefaultAction {
+            get {
+                return ((bool)(this["DontCloseAfterDefaultAction"]));
+            }
+            set {
+                this["DontCloseAfterDefaultAction"] = value;
+            }
+        }
     }
 }

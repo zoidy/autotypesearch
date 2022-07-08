@@ -58,6 +58,7 @@ namespace AutoTypeSearch
 
 			mDefaultAction.SelectedIndex = (int)Settings.Default.DefaultAction;
 			mAlternativeAction.SelectedIndex = (int)Settings.Default.AlternativeAction;
+            mDontCloseAfterDefaultAction.Checked = Settings.Default.DontCloseAfterDefaultAction;
 		}
 
 		private Keys ShowHotKey
@@ -89,6 +90,7 @@ namespace AutoTypeSearch
 			Settings.Default.DefaultAction = (Actions)mDefaultAction.SelectedIndex;
 			Settings.Default.AlternativeAction = (Actions)mAlternativeAction.SelectedIndex;
 			Settings.Default.ShowHotKey = ShowHotKey;
+            Settings.Default.DontCloseAfterDefaultAction = mDontCloseAfterDefaultAction.Checked;
 
 			ApplyHotKey();
 		}
