@@ -88,6 +88,15 @@ namespace AutoTypeSearch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy user.
+        /// </summary>
+        internal static string CopyUser {
+            get {
+                return ResourceManager.GetString("CopyUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy password.
         /// </summary>
         internal static string CopyPassword {

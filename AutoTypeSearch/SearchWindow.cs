@@ -829,6 +829,9 @@ namespace AutoTypeSearch
 					case Actions.OpenEntryUrl:
 						OpenEntryUrl(searchResult);
 						break;
+					case Actions.CopyUser:
+						CopyUser(searchResult);
+						break;                        
 					case Actions.CopyPassword:
 						CopyPassword(searchResult);
 						break;
@@ -912,6 +915,16 @@ namespace AutoTypeSearch
 		private void OpenEntryUrl(SearchResult searchResult)
 		{
 			WinUtil.OpenEntryUrl(searchResult.Entry);
+		}
+
+		private void CopyUser(SearchResult searchResult)
+		{
+			if (ClipboardUtil.Copy(searchResult.Entry.Strings.ReadSafe(PwDefs.UserNameField), true, true, searchResult.Entry,
+									mMainForm.DocumentManager.SafeFindContainerOf(searchResult.Entry),
+									IntPtr.Zero))
+			{
+				mMainForm.StartClipboardCountdown();
+			}
 		}
 
 		private void CopyPassword(SearchResult searchResult)
